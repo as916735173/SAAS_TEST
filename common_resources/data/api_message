@@ -1,0 +1,30 @@
+接口名称：车辆列表
+请求方式：POST
+接口地址：https://managerweb.test.ccclubs.com/ccclubs-manager-web/asset/car/groupPage
+请求参数：
+{
+    "currPage":"1",//分页参数不用测试
+    "pageSize":"200",//分页参数不用测试
+    "carNo":"",//非必填，车牌号
+    "vin":"",//非必填，车架号
+    "bizStatus":"",//非必填，车辆状态: 1待整备 2已完备 3在运营 4已报废
+    "companyUuid":""//非必填，企业uuid不用测试
+}
+接口名称：车辆详情
+请求方式：POST
+接口地址：https://managerweb.test.ccclubs.com/ccclubs-manager-web/asset/car/groupDetail
+请求参数：
+{
+    "uuid":"dbbc27d3b5984fc7be21aa80f97805b8",//车辆uuid，可以通过车辆列表接口只传分页参数后的返回数据测试
+    "companyUuid":"06a6fca206fd496e905c5b31fb2c835b"//企业uuid，可以通过车辆列表接口只传分页参数后的返回数据测试
+}
+接口名称：违章记录
+请求方式：POST
+接口地址：https://managerweb.test.ccclubs.com/ccclubs-manager-web/violation/groupPage
+请求参数：
+{
+    "currPage":"1",//分页参数不用测试
+    "pageSize":"99",//分页参数不用测试
+    "companyUuid":"06a6fca206fd496e905c5b31fb2c835b",//企业uuid，可以通过车辆列表接口只传分页参数后的返回数据测试
+    "carNo":"浙ADV8259"//车牌号，可以通过车辆列表接口只传分页参数后的返回数据测试
+}

@@ -1,0 +1,16 @@
+def send_request(method, url, params):
+    """发送接口请求并返回响应（携带固定token）"""
+    try:
+        # 修改：调整 Authorization 头的前缀（示例为无 Bearer）
+        headers = {
+            "Authorization": TOKEN,  # 直接传 token 无前缀
+            "Content-Type": "application/json"
+        }
+        if method.upper() == "POST":
+            response = requests.post(url, json=params, headers=headers)
+        else:
+            return {"status": "error", "message": "不支持的请求方法"}
+        response.raise_for_status()
+        return {"status": "success", "data": response.json()}
+    except Exception as e:
+        return {"status": "error", "message": str(e)}

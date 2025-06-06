@@ -1,0 +1,112 @@
+[
+    {
+        "用例编号": "API-001",
+        "用例名称": "车辆列表-正常参数查询",
+        "测试类型": "功能测试",
+        "请求方式": "POST",
+        "接口地址": "https://managerweb.test.ccclubs.com/ccclubs-manager-web/asset/car/groupPage",
+        "请求参数": "{\"currPage\":\"1\",\"pageSize\":\"200\",\"carNo\":\"浙ADV8259\",\"vin\":\"LSGKE54L6HS212345\",\"bizStatus\":\"3\",\"companyUuid\":\"\"}",
+        "预期响应": "HTTP 200，返回包含浙ADV8259车牌号、LSGKE54L6HS212345车架号且状态为在运营的车辆列表",
+        "测试步骤": "1. 构造有效carNo/vin/bizStatus；\n2. 发送POST请求；\n3. 验证响应状态码及数据正确性。",
+        "备注": "验证正常过滤逻辑"
+    },
+    {
+        "用例编号": "API-002",
+        "用例名称": "车辆列表-bizStatus无效值",
+        "测试类型": "异常测试",
+        "请求方式": "POST",
+        "接口地址": "https://managerweb.test.ccclubs.com/ccclubs-manager-web/asset/car/groupPage",
+        "请求参数": "{\"currPage\":\"1\",\"pageSize\":\"200\",\"carNo\":\"\",\"vin\":\"\",\"bizStatus\":\"5\",\"companyUuid\":\"\"}",
+        "预期响应": "HTTP 400，返回{\"code\":400,\"msg\":\"车辆状态参数无效\"}",
+        "测试步骤": "1. 构造bizStatus=5（非1-4）；\n2. 发送请求；\n3. 验证错误提示。",
+        "备注": "验证bizStatus参数范围校验"
+    },
+    {
+        "用例编号": "API-003",
+        "用例名称": "车辆列表-carNo空值",
+        "测试类型": "功能测试",
+        "请求方式": "POST",
+        "接口地址": "https://managerweb.test.ccclubs.com/ccclubs-manager-web/asset/car/groupPage",
+        "请求参数": "{\"currPage\":\"1\",\"pageSize\":\"200\",\"carNo\":\"\",\"vin\":\"\",\"bizStatus\":\"\",\"companyUuid\":\"\"}",
+        "预期响应": "HTTP 200，返回所有车辆列表（无过滤）",
+        "测试步骤": "1. 不传入carNo/vin/bizStatus；\n2. 发送请求；\n3. 验证返回数据为全量。",
+        "备注": "验证非必填参数空值逻辑"
+    },
+    {
+        "用例编号": "API-004",
+        "用例名称": "车辆详情-有效uuid查询",
+        "测试类型": "功能测试",
+        "请求方式": "POST",
+        "接口地址": "https://managerweb.test.ccclubs.com/ccclubs-manager-web/asset/car/groupDetail",
+        "请求参数": "{\"uuid\":\"dbbc27d3b5984fc7be21aa80f97805b8\",\"companyUuid\":\"06a6fca206fd496e905c5b31fb2c835b\"}",
+        "预期响应": "HTTP 200，返回车辆详细信息（如车牌号、车架号、状态）",
+        "测试步骤": "1. 从车辆列表接口获取有效uuid；\n2. 发送POST请求；\n3. 验证响应包含完整信息。",
+        "备注": "验证正常详情查询逻辑"
+    },
+    {
+        "用例编号": "API-005",
+        "用例名称": "车辆详情-无效uuid查询",
+        "测试类型": "异常测试",
+        "请求方式": "POST",
+        "接口地址": "https://managerweb.test.ccclubs.com/ccclubs-manager-web/asset/car/groupDetail",
+        "请求参数": "{\"uuid\":\"invalid_uuid\",\"companyUuid\":\"06a6fca206fd496e905c5b31fb2c835b\"}",
+        "预期响应": "HTTP 404，返回{\"code\":404,\"msg\":\"车辆不存在\"}",
+        "测试步骤": "1. 构造不存在的uuid；\n2. 发送请求；\n3. 验证错误提示。",
+        "备注": "验证无效uuid的异常处理"
+    },
+    {
+        "用例编号": "API-006",
+        "用例名称": "车辆详情-companyUuid不匹配",
+        "测试类型": "异常测试",
+        "请求方式": "POST",
+        "接口地址": "https://managerweb.test.ccclubs.com/ccclubs-manager-web/asset/car/groupDetail",
+        "请求参数": "{\"uuid\":\"dbbc27d3b5984fc7be21aa80f97805b8\",\"companyUuid\":\"wrong_company_uuid\"}",
+        "预期响应": "HTTP 403，返回{\"code\":403,\"msg\":\"无权限访问该车辆\"}",
+        "测试步骤": "1. 使用有效uuid但错误companyUuid；\n2. 发送请求；\n3. 验证权限校验。",
+        "备注": "验证企业权限逻辑"
+    },
+    {
+        "用例编号": "API-007",
+        "用例名称": "违章记录-有效carNo查询",
+        "测试类型": "功能测试",
+        "请求方式": "POST",
+        "接口地址": "https://managerweb.test.ccclubs.com/ccclubs-manager-web/violation/groupPage",
+        "请求参数": "{\"currPage\":\"1\",\"pageSize\":\"99\",\"companyUuid\":\"06a6fca206fd496e905c5b31fb2c835b\",\"carNo\":\"浙ADV8259\"}",
+        "预期响应": "HTTP 200，返回浙ADV8259车辆的违章记录列表（如时间、地点）",
+        "测试步骤": "1. 从车辆列表接口获取有效carNo；\n2. 发送POST请求；\n3. 验证响应包含目标数据。",
+        "备注": "验证正常违章查询逻辑"
+    },
+    {
+        "用例编号": "API-008",
+        "用例名称": "违章记录-无效carNo查询",
+        "测试类型": "异常测试",
+        "请求方式": "POST",
+        "接口地址": "https://managerweb.test.ccclubs.com/ccclubs-manager-web/violation/groupPage",
+        "请求参数": "{\"currPage\":\"1\",\"pageSize\":\"99\",\"companyUuid\":\"06a6fca206fd496e905c5b31fb2c835b\",\"carNo\":\"无效车牌\"}",
+        "预期响应": "HTTP 200，返回空列表（无匹配记录）",
+        "测试步骤": "1. 构造不存在的carNo；\n2. 发送请求；\n3. 验证返回数据为空。",
+        "备注": "验证无效车牌号过滤逻辑"
+    },
+    {
+        "用例编号": "API-009",
+        "用例名称": "违章记录-companyUuid无效",
+        "测试类型": "异常测试",
+        "请求方式": "POST",
+        "接口地址": "https://managerweb.test.ccclubs.com/ccclubs-manager-web/violation/groupPage",
+        "请求参数": "{\"currPage\":\"1\",\"pageSize\":\"99\",\"companyUuid\":\"wrong_company_uuid\",\"carNo\":\"浙ADV8259\"}",
+        "预期响应": "HTTP 403，返回{\"code\":403,\"msg\":\"无权限查询该企业违章记录\"}",
+        "测试步骤": "1. 使用错误companyUuid；\n2. 发送请求；\n3. 验证权限校验。",
+        "备注": "验证企业权限逻辑"
+    },
+    {
+        "用例编号": "API-010",
+        "用例名称": "违章记录-carNo空值",
+        "测试类型": "功能测试",
+        "请求方式": "POST",
+        "接口地址": "https://managerweb.test.ccclubs.com/ccclubs-manager-web/violation/groupPage",
+        "请求参数": "{\"currPage\":\"1\",\"pageSize\":\"99\",\"companyUuid\":\"06a6fca206fd496e905c5b31fb2c835b\",\"carNo\":\"\"}",
+        "预期响应": "HTTP 200，返回该企业所有车辆的违章记录",
+        "测试步骤": "1. 不传入carNo；\n2. 发送请求；\n3. 验证返回数据为全量。",
+        "备注": "验证非必填参数空值逻辑"
+    }
+]
