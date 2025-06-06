@@ -7,7 +7,7 @@ from datetime import datetime
 import os  # 新增日期和文件操作依赖
 
 # 配置路径（移除固定REPORT_PATH，改为动态生成）
-TEST_CASE_PATH = "test_cases/api/api_test_cases.xlsx"  # 测试用例文件路径
+TEST_CASE_PATH = "test_cases/api/api_text_cases_v2.1.6.7_1.xlsx"  # 测试用例文件路径
 BASE_URL = "https://managerweb.test.ccclubs.com/ccclubs-manager-web/user/login/login"  # 接口基础地址
 TOKEN = "5da8df3ec88045ad8082b65ea2b15755"  # 固定token值
 

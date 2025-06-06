@@ -10,7 +10,7 @@ def generate_excel_from_case():
     VERSION = "v2.1.6.7"  # 当前版本号（根据实际项目修改）
     CASE_FILE = os.path.join("common_resources", "data", "case")  # 测试用例JSON文件路径（用户提供的文件）
     EXCEL_OUTPUT_DIR = "test_cases/api"  # Excel输出目录（用户要求的test_cases/api）
-    BASE_NAME = f"测试用例_{VERSION}_"  # 文件名前缀（用户要求的格式）
+    BASE_NAME = f"api_test_cases{VERSION}_"  # 文件名前缀（用户要求的格式）
 
     # 步骤1：检查测试用例JSON文件是否存在
     if not os.path.exists(CASE_FILE):
