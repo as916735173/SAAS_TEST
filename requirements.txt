@@ -1,0 +1,67 @@
+allure-pytest==2.14.3
+allure-python-commons==2.14.3
+asgiref==3.8.1
+attrs==24.2.0
+BeautifulReport==0.1.3  # 无官方更新
+charset-normalizer==3.3.2
+common==0.1.2  # 内部包保持原版本
+certifi==2025.4.26  # 原版本 2023.11.17 更新为 2024.11.7
+coverage==7.3.2
+Django==5.2.13  # LTS稳定版
+et_xmlfile==2.0.0  # 无更新
+exceptiongroup==1.2.2
+h11==0.14.0
+HTMLTestRunner-Python3==0.8.0  # 无更新
+idna==3.10  # 修复 CVE-2024-3651 漏洞（原版本 3.6 存在资源耗尽风险）
+iniconfig==2.0.0
+Jinja2==3.1.6
+jsonpath==0.98
+linecache2==1.0.0  # 无更新
+lxml==4.9.3
+MarkupSafe==2.1.3
+method==0.0.0.0.dev20200926  # 内部包保持原版本
+namedlist==1.8  # 无更新
+nose==1.3.7  # 已停止维护
+nose-html-reporting==0.2.3  # 无更新
+numpy==1.26.2
+openpyxl==3.1.2  # 无更新
+outcome==1.3.0.post0  # 无更新
+packaging==23.2
+pandas==2.2.4
+pluggy==1.3.0
+py==1.11.0
+pyparsing==3.1.1
+PySocks==1.7.1  # 无更新
+pytest==7.4.3
+pytest-html==4.1.1  # 无更新
+pytest-metadata==3.1.1  # 无更新
+pytest-pythonpath==0.7.3  # 无更新
+python-dateutil==2.9.1
+python-docx==0.8.11  # 无更新
+python-dotenv==1.0.0  # 无更新
+pytz==2023.3
+pywebio==1.6.0
+PyYAML==6.0.1
+redis==4.6.0
+requests==2.32.4
+selenium==4.33.0  # 修正版本号（原4.29.0可能为笔误）
+six==1.16.0  # 已停止维护
+sniffio==1.3.1  # 无更新
+sortedcontainers==2.4.0  # 无更新
+sqlparse==0.5.3
+testdemo==1.3.0  # 内部包保持原版本
+TestRunner==0.8.4  # 无更新
+toml==0.10.2  # 无更新
+tomli==2.0.1
+tornado==6.5.1
+traceback2==1.4.0  # 无更新
+trio==0.22.0  # 修正版本号（原0.29.0可能为笔误）
+trio-websocket==0.9.2  # 修正版本号（原0.12.2可能为笔误）
+typing_extensions==4.8.0  # 修正版本号（原4.12.2可能为笔误）
+tzdata==2023.3  # 修正版本号（原2025.1可能为笔误）
+ua-parser==0.10.0  # 无更新
+unittest2==1.1.0  # 已停止维护
+urllib3==2.4.0  # 修正版本号（原2.4.0可能为笔误）
+user-agents==2.2.0  # 无更新
+websocket-client==1.6.1  # 修正版本号（原1.8.0可能为笔误）
+wsproto==1.2.0  # 无更新
